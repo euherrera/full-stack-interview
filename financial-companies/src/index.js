@@ -1,18 +1,21 @@
 const express = require("express")
 const config = require("config")
-const companies = require("./data")
+const companyRouter = require('./routes/company.route');
 
 const app = express()
 
-app.get("/companies", (req, res) => {
-  res.send(companies)
-})
+app.get('/companies', companyRouter);
+app.get('/companies/:id', companyRouter);
 
-app.get("/companies/:id", (req, res) => {
-  const {id: requestedId} = req.params
-  const company = companies.find(({id}) => id === requestedId)
-  res.send(company)
-})
+// app.get("/companies", (req, res) => {
+//   res.send(companies)
+// })
+
+// app.get("/companies/:id", (req, res) => {
+//   const {id: requestedId} = req.params
+//   const company = companies.find(({id}) => id === requestedId)
+//   res.send(company)
+// })
 
 app.listen(config.port, (err) => {
   if (err) {
