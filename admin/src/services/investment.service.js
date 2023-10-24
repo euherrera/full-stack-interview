@@ -43,6 +43,20 @@ class InvestmentService  {
    
   }
 
+  async getCompanies(id, res) {
+    const request =  axios
+    .get(`${config.companiesServiceUrl}/companies/${id}`)
+    .then((response) => {
+      return response.data.name;
+    })
+    .catch((error) => {
+      console.error('error:', error);
+      return error.toString();
+    });
+    
+    return request;
+}
+
   async postInvestments(res, req) {
   
     //const { id, userId, firstName, lastName, investmentTotal, date, holdings } = req.body;
