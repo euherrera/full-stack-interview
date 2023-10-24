@@ -40,9 +40,9 @@ We're interested in how you break down the work and build your solution in a cle
 - Your new routes
 - How to run any additional scripts or tests you may have added
 - Relating to the task please add answers to the following questions;
-    1. How might you make this service more secure?
-    2. How would you make this solution scale to millions of records?
-    3. What else would you have liked to improve given more time?
+    1. How might you make this service more secure? place code inside a serverless architecture or inside an EC2 cluster inside a http gateway service like Kong gateway. Add schema validation middleware for post requests
+    2. How would you make this solution scale to millions of records? use persistance or containerisation
+    3. What else would you have liked to improve given more time? I would have worked on finishing extracting the company name and place it inside the newObj holding key
 
 
 On completion email a link to your repository to your contact at Moneyhub and ensure it is publicly accessible.
