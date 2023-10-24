@@ -1,27 +1,32 @@
 const express = require("express")
 const bodyParser = require("body-parser")
 const config = require("config")
-const investments = require("./data")
+const investmentRouter = require('./routes/investment.route');
 const R = require("ramda")
 
 const app = express()
 
 app.use(bodyParser.json({limit: "10mb"}))
 
-app.get("/investments", (req, res) => {
-  res.send(investments)
-})
+app.get('/investments', investmentRouter);
+app.get('/investments/:id', investmentRouter);
 
-app.get("/investments/:id", (req, res) => {
-  const {id} = req.params
-  const investment = R.filter(R.propEq("id", id), investments)
-  res.send(investment)
-})
+app.post('/investments/export', investmentRouter);
 
-app.post("/investments/export", (req, res) => {
-  console.log("Body received", req.body)
-  res.sendStatus(204)
-})
+// app.get("/investments", (req, res) => {
+//   res.send(investments)
+// })
+
+// app.get("/investments/:id", (req, res) => {
+//   const {id} = req.params
+//   const investment = R.filter(R.propEq("id", id), investments)
+//   res.send(investment)
+// })
+
+// app.post("/investments/export", (req, res) => {
+//   console.log("Body received", req.body)
+//   res.sendStatus(204)
+// })
 
 app.listen(config.port, (err) => {
   if (err) {
