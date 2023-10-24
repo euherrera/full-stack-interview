@@ -1,12 +1,12 @@
 
 class CompanyController {
-    constructor(companyService) {
-      this.companyService = companyService;
+    constructor(investmentService) {
+      this.investmentService = investmentService;
     }
 
     async getCompanies(req, res) {
         const { id } = req.params;
-        const companies = await this.companyService.getCompanies(id, res);
+        const companies = await this.investmentService.getCompanies(id, res);
         return res.status(200).send(companies);
         
     }
