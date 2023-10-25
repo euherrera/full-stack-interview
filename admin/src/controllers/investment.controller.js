@@ -6,8 +6,8 @@ class InvestmentController {
 
     async getInvestments(req, res) {
         const { id } = req.params;
-        const investments = await this.investmentService.getInvestments(id, res);
-        
+        const investments = await this.investmentService.getInvestments(id, res, req);
+       
         return res.status(200).send(investments);
     }
 

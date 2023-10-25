@@ -8,7 +8,8 @@ class CompanyController {
     async getCompanies(req, res) {
       try {
         const { id } = req.params;
-        const companies = await this.companyService.getCompanies(id, res);
+        
+        const companies = await this.companyService.getCompanies(id, res, req);
         return res.status(200).send(companies);
       }catch(error){
         console.log(error)

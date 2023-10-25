@@ -1,14 +1,9 @@
-const request = require("request");
 const config = require("config")
 const axios = require('axios');
 
-  class CompanyService {
-   
-
-  async getCompanies(id, res, req) {
-    
+const routing = (req, res, next)=>{
     const request =  axios
-    .get(`${config.companiesServiceUrl}/companies/${id}`)
+    .get(`${config.companiesServiceUrl}/companies/${req.params.id}`)
     .then((response) => {
       req.name = response.data.name;
       return response.data.name;
@@ -17,14 +12,17 @@ const axios = require('axios');
       console.error('error:', error);
       return error.toString();
     });
-    
-    return request;
-}
+
+    next();
+};  
+module.exports = routing
 
 
-}
 
-const companyService = new CompanyService();
-module.exports = companyService;
+
+
+   
+
+
 
 

@@ -5,14 +5,14 @@ const axios = require('axios');
 const config = require("config")
 class InvestmentService  {
   
-  async getInvestments(id, res) {
+  async getInvestments(id, res, req) {
     
     
     const request = await axios
       .get(`${config.investmentsServiceUrl}/investments/${id}`)
       .then((response) => {
         //console.log('body:', response.data);
-        
+        console.log(req.name)
         const {id, userId, firstName, lastName, investmentTotal, date, holdings } = response.data[0]
         const holding = holdings[0]
         const {investmentPercentage} = holding
@@ -23,17 +23,16 @@ class InvestmentService  {
         newObj.firstName = firstName;
         newObj.lastName = lastName;
         newObj.date = date;
-        newObj.holding = ''
+        newObj.holding = req.name
         newObj.value = investmentTotal * investmentPercentage;
       
-        const header = Object.keys(response.data[0]).map(a => JSON.stringify(a)).join('|') + '\n'
-        const outData = response.data.reduce((acc, row) => {
-          return acc + Object.values(row).map(_ => JSON.stringify(_)).join('|') + '\n'
-        }, header)
-        console.log('new:', newObj, typeof(newObj))
-        console.log('csv:',outData)
+        const header = Object.keys(newObj).map(a => JSON.stringify(a)).join('|') + '\n'
+        const outData = Object.values(newObj).map(a => JSON.stringify(a)).join('|') + '\n'
         
-        return outData;
+        console.log('csv:',newObj)
+        console.log('csv:',header.concat(outData))
+        
+        return header.concat(outData);
       })
       .catch((error) => {
         console.error('error:', error);
@@ -43,10 +42,12 @@ class InvestmentService  {
    
   }
 
+  
+
 
 
   async postInvestments(res, req) {
-  
+    
     //const { id, userId, firstName, lastName, investmentTotal, date, holdings } = req.body;
     const data = {
       id: "1",
