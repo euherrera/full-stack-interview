@@ -42,10 +42,6 @@ class InvestmentService  {
    
   }
 
-  
-
-
-
   async postInvestments(res, req) {
     
     //const { id, userId, firstName, lastName, investmentTotal, date, holdings } = req.body;

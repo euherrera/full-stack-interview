@@ -10,7 +10,7 @@ const axios = require('axios');
     const request =  axios
     .get(`${config.companiesServiceUrl}/companies/${id}`)
     .then((response) => {
-      req.name = response.data.name;
+
       return response.data.name;
     })
     .catch((error) => {
