@@ -9,16 +9,24 @@ class CompanyService {
 
   async getCompanies() {
   
+    try {
+      const companies = await this.data;
+      return companies;
+    }catch(error) {
+      console.log(error)
+    }
     
-    const companies = await this.data;
-    return companies;
   }
 
   async getCompany() {
    
-   
-    const companies = await this.data;
-    return companies;
+    try {
+      const companies = await this.data;
+      return companies;
+    }catch(error) {
+      console.log(error)
+    }
+    
   }
 
 }
