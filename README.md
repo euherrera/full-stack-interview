@@ -38,6 +38,9 @@ We're interested in how you break down the work and build your solution in a cle
 **Please make sure to update the readme with**:
 
 - Your new routes
+- /companies/:id'
+-/investments/:id
+- /investments/export
 - How to run any additional scripts or tests you may have added
 - *inside 'investments', run **npm test** to run a few jest tests with coverage
 - Relating to the task please add answers to the following questions;
