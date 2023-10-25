@@ -29,8 +29,6 @@ class InvestmentService {
 
 
   async postInvestment(req) {
-   
-    
     try{
       console.log("Body received", req.body)
       res.sendStatus(204)

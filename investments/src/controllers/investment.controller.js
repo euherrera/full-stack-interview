@@ -5,22 +5,39 @@ class InvestmentController {
     }
   
     async getInvestments(req, res) {
-      const investments = await this.investmentService.getInvestments();
-      return res.status(200).send(investments);
+      try {
+        const investments = await this.investmentService.getInvestments();
+        return res.status(200).send(investments);
+      }catch(error) {
+        // console.log(error)
+        return res.status(500).send(error);
+      }
+      
     }
 
     async getInvestment(req, res) {
-      const { id } = req.params;
+      try {
+        const { id } = req.params;
+        console.log(id)
+        const investments = await this.investmentService.getInvestment(id);
+        const investment = R.filter(R.propEq("id", id), investments)
+        return res.status(200).send(investment)
+      }catch(error){
+        // console.log(error)
+        return res.status(500).send(error);
+      }
       
-      console.log(id)
-      const investments = await this.investmentService.getInvestment(id);
-      const investment = R.filter(R.propEq("id", id), investments)
-      return res.send(investment)
     }
 
     async postInvestment(req, res) {
-      const investment = await this.investmentService.postInvestment(req);
-      return res.status(200).send(investment);
+      try {
+        const investment = await this.investmentService.postInvestment(req);
+        return res.status(200).send(investment);
+      }catch(error){
+        // console.log(error)
+        return res.status(500).send(error);
+      }
+      
     }
   }
   
