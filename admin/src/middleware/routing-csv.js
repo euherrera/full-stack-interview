@@ -1,12 +1,7 @@
-const request = require("request");
+const config = require("config")
 const axios = require('axios');
 
-
-const config = require("config")
-class InvestmentService  {
-  
-  async getInvestments(id, res, req) {
-    
+const routing = async (req, res, next)=>{
     
     const request = await axios
       .get(`${config.investmentsServiceUrl}/investments/${id}`)
@@ -29,21 +24,25 @@ class InvestmentService  {
         const header = Object.keys(newObj).map(a => JSON.stringify(a)).join('|') + '\n'
         const outData = Object.values(newObj).map(a => JSON.stringify(a)).join('|') + '\n'
         
-        // console.log('csv:',newObj)
+        console.log('csv:',newObj)
         console.log('csv:',header.concat(outData))
-        
+        req.csv = header.concat(outData);
         return header.concat(outData);
       })
       .catch((error) => {
         console.error('error:', error);
         return error.toString();
       });
-    return request;
+    next();
+};  
+module.exports = routing
+
+
+
+
+
    
-  }
 
 
-}
 
-const investmentService = new InvestmentService();
-module.exports = investmentService;
+
