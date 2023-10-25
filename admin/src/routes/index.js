@@ -8,7 +8,7 @@ module.exports = () => {
   const router = express.Router();
   router.use('/companies', companyRouter);
   router.use('/investments', investmentRouter);
-  router.use('/investments', reportRouter);
+  router.use('/investments/export', reportRouter);
 
   return router;
 };
