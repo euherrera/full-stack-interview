@@ -8,25 +8,35 @@ class InvestmentService {
   }
 
   async getInvestments() {
-   
-    const investments = await this.data;
-    return investments;
+    try {
+      const investments = await this.data;
+      return investments;
+    }catch(error) {
+      console.log(error)
+    }
+    
   }
 
   async getInvestment() {
+    try {
+      const investments = await this.data;
+      return investments;
+    }catch(error){
+      console.log(error)
+    }
     
-    const investments = await this.data;
-    return investments;
   }
 
 
   async postInvestment(req) {
    
-    // Prepare request
-    //const { articleId, articleType, articleBrandId, articleBarcode, articleZ3Barcode, articleDescription, articleLongDescription, articleWebDescription, articleSuperCategory, articleCategoryCode, articleCategory, articleSectionCode, articleSection, articleSubSectionCode, articleSubSection, articleFamilyCode, articleFamilyProductType, directDelivery, articleColour, articleRegularVendorCode, articleRegularVendorName, articleRegularVendorProductID, articleVatRate, eachLength, eachWidth, eachHeight, eachWeight, eachDepth, eachVolume, eachQuantity, imageUrl } = req.body;
-    console.log("Body received", req.body)
-    res.sendStatus(204)
-   
+    
+    try{
+      console.log("Body received", req.body)
+      res.sendStatus(204)
+    }catch(error){
+      console.log(error)
+    }
   }
 
 }
