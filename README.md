@@ -46,7 +46,14 @@ We're interested in how you break down the work and build your solution in a cle
 - Relating to the task please add answers to the following questions;
     1. How might you make this service more secure? place code inside a serverless architecture or inside an EC2 cluster inside a http gateway service like Kong gateway. Add schema validation middleware for post requests
     2. How would you make this solution scale to millions of records? use persistance or containerisation
-    3. What else would you have liked to improve given more time? I would have worked on finishing sending the json csv, as I was able to send the company name as middleware to the investment controller and the csv to the post controller.
+    3. What else would you have liked to improve given more time? 
+    - I would have worked on finishing sending the json csv, as I was able to send the company name as middleware to the investment controller and the csv to the post controller.
+    - I would have added logging
+    - cleaned up the try catch blocks
+    - refactored more
+    - error middleware
+    - export logs
+    - added openapi spec like swagger
 
 
 On completion email a link to your repository to your contact at Moneyhub and ensure it is publicly accessible.
