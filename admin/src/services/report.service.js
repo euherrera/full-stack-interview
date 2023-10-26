@@ -6,7 +6,7 @@ class ReportService  {
   async postInvestments(res, req) {
     
     const data = JSON.parse(req.csv);
-    console.log('report', data)
+    console.log('report', req.csv)
     const response = await axios.post(`${config.investmentsServiceUrl}/investments/export`, data)
     .then((response) => {
        response.data.json; 

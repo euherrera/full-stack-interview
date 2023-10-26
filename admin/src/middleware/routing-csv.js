@@ -4,10 +4,10 @@ const axios = require('axios');
 const routing = async (req, res, next)=>{
     
     const request = await axios
-      .get(`${config.investmentsServiceUrl}/investments/${id}`)
+      .get(`${config.investmentsServiceUrl}/investments/${req.params.id}`)
       .then((response) => {
         //console.log('body:', response.data);
-        console.log(req.name)
+        
         const {id, userId, firstName, lastName, investmentTotal, date, holdings } = response.data[0]
         const holding = holdings[0]
         const {investmentPercentage} = holding
@@ -27,6 +27,7 @@ const routing = async (req, res, next)=>{
         console.log('csv:',newObj)
         console.log('csv:',header.concat(outData))
         req.csv = header.concat(outData);
+        console.log(req.csv)
         return header.concat(outData);
       })
       .catch((error) => {
