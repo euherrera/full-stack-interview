@@ -5,5 +5,5 @@ const reportController = new ReportController(reportService);
 
 
 const router = express.Router();
-router.post('/investments/export', reportController.postInvestments.bind(reportController));
+router.get('/investments/export', reportController.postInvestments.bind(reportController));
 module.exports = router;
