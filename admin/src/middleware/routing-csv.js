@@ -1,7 +1,7 @@
 const config = require("config")
 const axios = require('axios');
 
-const routing = async (req, res, next)=>{
+const route = async (req, res, next)=> {
     
     const request = await axios
       .get(`${config.investmentsServiceUrl}/investments/${req.params.id}`)
@@ -27,7 +27,7 @@ const routing = async (req, res, next)=>{
         console.log('csv:',newObj)
         console.log('csv:',header.concat(outData))
         req.csv = header.concat(outData);
-        console.log(req.csv)
+        
         return header.concat(outData);
       })
       .catch((error) => {
@@ -36,7 +36,7 @@ const routing = async (req, res, next)=>{
       });
     next();
 };  
-module.exports = routing
+module.exports = route
 
 
 

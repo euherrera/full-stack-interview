@@ -6,7 +6,7 @@ const routing = (req, res, next)=>{
     .get(`${config.companiesServiceUrl}/companies/${req.params.id}`)
     .then((response) => {
       req.name = response.data.name;
-      console.log('middle', req.name)
+      //console.log('middle', req.name)
       return response.data.name;
     })
     .catch((error) => {

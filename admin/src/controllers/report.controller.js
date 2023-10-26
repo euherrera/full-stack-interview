@@ -5,8 +5,8 @@ class ReportController {
     }
 
     async postInvestments(req, res) {
-     
-      const investments = await this.reportService.postInvestments(req);
+      const { id } = req.params
+      const investments = await this.reportService.postInvestments(req, id);
       return res.status(200).send(investments);
     }
 
