@@ -10,6 +10,6 @@ const route = require('../middleware/routing-csv')
 const router = express.Router();
 
 router.get('/investments/:id', routing, route, investmentController.getInvestments.bind(investmentController));
-router.post('/investments/export',  investmentController.getInvestments.bind(investmentController));
+router.post('/investments/export',  reportController.postInvestments.bind(reportController));
 
 module.exports = router;
