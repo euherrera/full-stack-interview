@@ -22,7 +22,7 @@ class InvestmentService  {
             return error.toString();
           });
 
-        return response;
+        return req.csv;
         
    
   }
