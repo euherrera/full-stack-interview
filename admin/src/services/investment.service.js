@@ -36,7 +36,7 @@ class InvestmentService  {
     
     const data = output
     // data.csv = req.csv
-
+    console.log(data)
   
     const response = await axios.post(`${config.investmentsServiceUrl}/investments/export`, JSON.parse(data))
     .then((response) => {
