@@ -4,7 +4,6 @@ const config = require("config")
 // const request = require("request")
 const investmentsRouter = require('./routes/investment.route');
 const companiesRouter = require('./routes/company.route');
-const reportRouter = require('./routes/report.route');
 const app = express()
 
 app.use(bodyParser.json({limit: "10mb"}))
