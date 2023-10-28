@@ -24,12 +24,13 @@ class InvestmentService  {
 
   async postInvestments(res, req, id) {
     
-    
-    const response = await axios.post(`${config.investmentsServiceUrl}/investments/export`)
+    const data = {}
+    data.csv = req.csv
+    const response = await axios.post(`${config.investmentsServiceUrl}/investments/export`, data)
     .then((response) => {
        
-        //const data = req.csv
-        //console.log('report',  req.csv)
+        
+        console.log('report',  req.csv)
       //console.log(response.data)
       return response.data
     })
