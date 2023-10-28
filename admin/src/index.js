@@ -4,6 +4,7 @@ const config = require("config")
 // const request = require("request")
 const investmentsRouter = require('./routes/investment.route');
 const companiesRouter = require('./routes/company.route');
+const reportRouter = require('./routes/report.route');
 const app = express()
 
 app.use(bodyParser.json({limit: "10mb"}))
@@ -11,7 +12,7 @@ app.use(bodyParser.json({limit: "10mb"}))
 
 app.get('/investments/:id', investmentsRouter);
 app.get('/companies/:id', companiesRouter);
-app.post('/investments/export', investmentsRouter);
+app.get('/investments/export', reportRouter);
 
 // app.get("/investments/:id", (req, res) => {
 //   const {id} = req.params

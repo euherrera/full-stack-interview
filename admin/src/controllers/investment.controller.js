@@ -6,10 +6,10 @@ class InvestmentController {
 
     async getInvestments(req, res, next) {
         const { id } = req.params;
-        const investments = await this.investmentService.getInvestments(id, res, req);
+        const investments = await this.investmentService.getInvestments(id, res, req, next);
        
         return res.status(200).send(investments);
-        next()
+      
     }
 
     
