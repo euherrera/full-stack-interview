@@ -11,7 +11,7 @@ app.use(bodyParser.json({limit: "10mb"}))
 
 app.get('/investments/:id', investmentsRouter);
 app.get('/companies/:id', companiesRouter);
-app.post('/investments/export', reportRouter);
+app.post('/investments/export', investmentsRouter);
 
 // app.get("/investments/:id", (req, res) => {
 //   const {id} = req.params
